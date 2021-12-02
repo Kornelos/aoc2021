@@ -12,7 +12,7 @@ echo "Preparing kt file for day $day_num"
 echo "import java.io.File
 
  fun main() {
-     val file = File(\"/Users/kornel.skorka/IdeaProjects/aoc-2021/src/main/resources/day'$day_num'-data\")
+     val file = File(\"/Users/kornel.skorka/IdeaProjects/aoc-2021/src/main/resources/day$day_num-data\")
      partOne(file)
      partTwo(file)
  }
