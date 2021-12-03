@@ -1,36 +1,36 @@
-import java.io.File
-
 fun main() {
-    val file = File("/Users/kornel.skorka/IdeaProjects/aoc-2021/src/main/resources/day1-data")
-    partOne(file)
-    partTwo(file)
+    val day = DayOne()
+    day.run1st()
+    day.run2nd()
 }
 
-private fun partTwo(file: File) {
-    var lastDepthSum = Int.MAX_VALUE
-    var count = 0
-    file.useLines {
-        it.map(String::toInt).windowed(3).forEach { window ->
-            val depthSum = window.sum()
-            if (depthSum > lastDepthSum) {
-                count += 1
+class DayOne : Day(1) {
+    override fun partTwo(): Int {
+        var lastDepthSum = Int.MAX_VALUE
+        var count = 0
+        file.useLines {
+            it.map(String::toInt).windowed(3).forEach { window ->
+                val depthSum = window.sum()
+                if (depthSum > lastDepthSum) {
+                    count += 1
+                }
+                lastDepthSum = depthSum
             }
-            lastDepthSum = depthSum
         }
+        return count
     }
-    println(count)
-}
 
-private fun partOne(file: File) {
-    var lastDepth = Int.MAX_VALUE
-    var count = 0
-    file.useLines {
-        it.map(String::toInt).forEach { depth ->
-            if (depth > lastDepth) {
-                count += 1
+    override fun partOne(): Int {
+        var lastDepth = Int.MAX_VALUE
+        var count = 0
+        file.useLines {
+            it.map(String::toInt).forEach { depth ->
+                if (depth > lastDepth) {
+                    count += 1
+                }
+                lastDepth = depth
             }
-            lastDepth = depth
         }
+        return count
     }
-    println(count)
 }
